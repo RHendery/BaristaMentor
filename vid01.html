@@ -17,20 +17,18 @@
 
 </head>
 <main>
-	
+
 <body>
 
 <div id="videocontainer">
 	<div id="videocover">&nbsp;</div>
-	<video id ="vid01" controls width=100%>
-		<source src="videos\vid01.MOV"  autoplay>
-		Your browser does not support the video tag.
-	</video>
+	<iframe width="420" height="315" src="https://www.youtube.com/embed/3M4Vo0JB_NE" frameborder="0" allowfullscreen></iframe>
+	
 </div>
 
-		<script type='text/javascript'> 
+		<script type='text/javascript'>
     document.getElementById('vid01').addEventListener('ended',endedHandler,false);
-	
+
     function endedHandler(e) { //this dynamically creates a button after the video ends
         var btn = document.createElement("Button");
 		var btn2 = document.createElement("Button");
@@ -40,40 +38,38 @@
 		btn2.className = "videobutton";
 		btn.onclick = function(){
 		window.location.href = "drinks.html"; //this sends the user to the drinks page when they click the button
-		};	
+		};
 		btn2.onclick = function() {
 		var vid = document.getElementById("vid01");
 		vid.play();
 		} // this replays the video
 		var t = document.createTextNode("Done");
 		btn.appendChild(t);
-		
+
 		var t2 = document.createTextNode("Replay");
 		btn2.appendChild(t2);
-		
+
 		var videocover = document.getElementById('videocover');
 		videocover.appendChild(btn); //this should make it possible to put the buttons on top of the video in the centre if we want to by using css, but I can't figure it out.
 		videocover.appendChild(btn2);
     }
-	
+
 	var vid = document.getElementById("vid01");
 	vid.onplay = function() {
-    
+
 	if(document.getElementById('backbutton')!=null) { // this removes the buttons when the user replays the video, so you don't end up with duplicated buttons when it finishes for the second time.
-			
+
 			videocover = document.getElementById('videocover');
 			btn = document.getElementById('backbutton');
 			videocover.removeChild(btn);
 			btn2 = document.getElementById('replaybutton');
 			videocover.removeChild(btn2);
 		}
-	
+
 	};
-	
+
 </script>
 
 </main>
 
 </body>
-
-
