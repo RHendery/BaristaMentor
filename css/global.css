@@ -12,6 +12,7 @@ html {
   -ms-text-size-adjust:     100%;
 }
 body {
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   margin: 0;
 }
 article,
@@ -66,7 +67,7 @@ h1 {
 }
 mark {
   background: #ff0;
-  color: #141414; 
+  color: #141414;
 }
 small {
   font-size: 80%;
@@ -208,7 +209,7 @@ body {
   color: #000;
   font-weight: normal;
   padding: 0.8em 12px;
-  max-width: 480px;
+  max-width: 760px; /* 480px;*/
   margin: 0 auto;
 }
 
@@ -233,7 +234,7 @@ p {
 /* Links */
 
 a,
-a:link { 
+a:link {
   color: inherit;
   font-weight: normal;
   outline: none;
@@ -259,7 +260,7 @@ a:focus {
 }
 
 header {
-  background-color: rgba(63, 232, 224, 1);
+  background-color: "#3b5998"; //rgba(63, 232, 224, 1);
   font-size: 135%;
   font-weight: bold;
   border-top: 2px solid #000;
