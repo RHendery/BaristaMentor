@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drinks - Barista Mentor</title>
+	<link rel="stylesheet" href="./css/global.css">
+	<link rel="stylesheet" href="./css/drinks.css">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/js.cookie.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		if (Cookies.get("quiz01.passed") == "true") {
+			$("#quiz01-btn").hide();
+			$("#quiz01-badge").show();
+		} else {
+			$("#quiz01-badge").hide();
+			$("#quiz01-btn").show();
+		}
+	});
+	</script>
+</head>
+<body>
+<header>
+	<a href="index.html" value="home"><span>&#8962;</span>HOME</a>
+</header>
+<main id="drinks-container">
+	<div class="drink">
+		<h2>Cappuccino</h2>
+		<a href="vid01.html" value="cup-choice" class="c-s-6"><img src="imgs/cap-icon.png" alt="#" class="c-s-6 mix"></a><!--  
+	--><div class="c-s-6">
+		<p>Strong foamy espresso based bevie made with equal parts micro-dense foam to hot textured milk. A reg (8oz) cup = 105 mls foam / 105 milk / 30mls espresso.</p>
+		<a href="vid01.html" value="cup-choice" class="button"><span>&#9654;</span>PLAY</a>
+		<a id="quiz01-btn" href="quiz01.html" class="button">Quiz</a>
+		<span id="quiz01-badge"><img src="./imgs/quiz01-badge.png" width="75px"></span>
+		</div>
+	</div>
+	<div class="drink">
+		<h2>Latte</h2>
+		<a href="vid01.html" value="cup-choice" class="c-s-6"><img src="imgs/lat-icon.png" alt="#" class="c-s-6 mix"></a><!--  
+--><div class="c-s-6"> 
+		<p>Latte - Milky espresso based bevie consisting of a thin to medium layer of micro-dense foam sitting on 80% silky, hot, textured milk. A reg (8oz) = 50ml foam / 160 mls milk / 30mls espresso.</p>
+		<a href="vid01.html" value="cup-choice" class="button"><span>&#9654;</span>PLAY</a>
+		<a href="quiz01.html" class="button">Quiz</a>
+		</div>
+	</div><!--  
+--><div class="drink">
+		<h2>Macchiato</h2>
+		<a href="vid01.html" value="cup-choice" class="c-s-6"><img src="imgs/mac-icon.png" alt="#" class="c-s-6 mix"></a><!--  
+	--><div class="c-s-6">
+		<p>Macchiato - Espresso stained with micro-dense foam and marked by a small amount of milk. A piccolo cup (4oz) = 30mls espresso / 5mls milk / 25mls foam.</p>
+		<a href="vid01.html" value="cup-choice" class="button"><span>&#9654;</span>PLAY</a>
+		<a href="quiz01.html" class="button">Quiz</a>
+		</div>
+	</div>
+</main>
+</body>
+</html>
+
+

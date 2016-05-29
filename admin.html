@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin panel</title>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/js.cookie.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$("#reset-quiz01-btn").click(function() {
+			Cookies.remove("quiz01.passed");
+			location.reload();
+			return false;
+		});
+
+		// init the status
+		var q1_stat = Cookies.get("quiz01.passed") == "true"; // stored as a string in the cookie
+		$("#quiz01-status span").html((q1_stat ? "Passed" : "Not yet passed"));
+		
+	});
+	</script>
+</head>
+<body>
+
+<section id="quiz01-options">
+	<p id="quiz01-status">Quiz 01 Status: <span></span> [<a id="reset-quiz01-btn" href="#">Reset</a>]</p>
+</section>
+	
+</body>
+</html>

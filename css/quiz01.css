@@ -1,0 +1,96 @@
+#validation-msg {
+  font-weight:bold;
+  position:fixed;
+  top:0;
+  left:0;
+  width:80%;
+  height:2em;
+  display:none;
+  vertical-align: middle;
+}
+
+#validation-msg.err {
+  border:1px solid red;
+  background:#ffe7e7;
+}
+
+div.range {
+  display:inline-block;
+  width:82%;
+  /*border:1px solid blue;*/
+  margin-top:-50px;
+  vertical-align:middle;
+}
+
+div.range .min {
+  width:20%;
+}
+
+div.range .max {
+  width:20%;
+}
+
+div.range input {
+  width:75%;
+}
+
+div.icon {
+  display:inline-block;
+  width:15%;
+  /*border:1px solid orange;*/
+}
+
+div.icon img {
+  width:100%;
+}
+
+div.output {
+  display:block;
+  text-align:center;
+}
+
+output {
+  font-weight:bold;
+}
+
+section.quiz-option {
+  border-bottom:1px solid black;
+  vertical-align: middle;
+  padding:1em 0;
+}
+
+section.quiz-option label {
+  font-weight:bold;
+  font-style:italic;
+}
+
+input[type="radio"]+label {
+  font-style:normal;
+  margin-left:0.5em;
+}
+
+.radio-group-label, 
+div>label {
+  display:
+  none;
+}
+
+.radio-group {
+  display:inline-block;
+  /*border:1px solid blue;*/
+  width:82%;
+}
+
+.radio-group label {
+  display:inline;
+}
+button {
+  display: inline-block;
+  text-decoration: center;
+  background-color: #d3d3d3;
+  padding:10px 0.9em 10px 0.7em; /* don't know why, but this needs to be lob-sided to look right */
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 0;
+}

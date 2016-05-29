@@ -1,0 +1,13 @@
+.containerdiv {
+float: left;
+position: relative;
+padding: 20px;
+}
+
+.badge {
+width: 20%;
+position: absolute; 
+bottom: 0;
+right: 20%;
+}
+

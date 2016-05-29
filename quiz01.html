@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cappuccino Quiz - Barista Mentor</title>
+	<link rel="stylesheet" href="css/global.css" />
+	<link rel="stylesheet" href="css/quiz01.css" />
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/js.cookie.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		// Sets the validation message that appears at the top of the page.  Currently assumes it's an error being
+		// displayed.
+		// @msg_type =	The type of message.  Valid = "err", "ok", "warn".  Sets the class accordingly.
+		// @msg =		The message to display.
+		alert_msg = function (msg_type, msg) {
+			// set the class as error or warning etc.
+			if (msg_type != "ok") $("#validation-msg").removeClass("ok");
+			if (msg_type != "err") $("#validation-msg").removeClass("err");
+			if (msg_type != "warn") $("#validation-msg").removeClass("warn");
+			
+			$("#validation-msg").addClass(msg_type);
+
+			// set the message to display
+			$("#validation-msg span.msg").html(msg);
+
+			// show the message
+			$("#validation-msg").show();
+		};
+
+
+		$("#validation-msg .close").click(function() {
+			$("#validation-msg").hide();
+			return false;
+		});
+
+		$("#quiz-form").submit(function() {
+			console.log("form submitted");
+			return false;
+		});
+
+		$("#form-cancel").click(function() {
+			location.href = "drinks.html";
+		});
+
+		$("#form-ok").click(function() {
+			// gets the value of an input type="range".  displays a message if no value is returned.
+			// sets the answer value based on ID
+			// @id = 	string name of the answer to set.  expects an input with the id of 
+			//			id+"_in". e.g. id = "foam" looks for "foam_in" to get the value from, 
+			//			and sets answer["foam"] to equal that val
+			// @msg =	the message to display if the value is undefined
+			var set_answer_from_range = function(id, msg) {
+				var val = parseInt($("#"+id+"_in").val());
+				if (val == undefined) { // can't use !foam as "0" is a valid value
+					alert_msg("err", msg);
+					return false;
+				}
+				answer[id] = val;
+			};
+
+
+			// confirms if val argument is within the array of range. 
+			// @val =		the value to test
+			// @range =		array with [min_val, max_val], where min_val + max_val are integer values e.g. [30,60]
+			var val_in_range = function(val, range) {
+				return (val >= range[0] && val <= range[1]);
+			};
+
+			var quizID = "quiz01";
+
+			// test on cap
+			var correct = {
+				"cup" : "reg",
+				"foam" : 50,
+				"milk" : 50,
+				"shot" : 30,
+				"temp" : [55, 65]
+			};
+
+			var answer = {
+				"cup" : "",
+				"foam" : 0,
+				"milk" : 0,
+				"shot" : 0,
+				"temp" : 0
+			}
+
+			// not a range, so handle manually (rather than with get_range_val() method)
+			answer["cup"] = $("input[type='radio'][name='cup']:checked").val();
+			if (!answer["cup"]) {
+				alert_msg("err", "Please select a cup size.");
+				return false;
+			}
+
+			set_answer_from_range("foam", "Please select a amount of foam.");
+			set_answer_from_range("milk", "Please select the amoung of milk.");
+			set_answer_from_range("temp", "Please select a temperature value.");
+			set_answer_from_range("shot", "Please select the number of shots.");
+
+			// because "temp" is a range, we have to step through each value to test
+			var pass = (correct["cup"] == answer["cup"] &&
+				correct["milk"] == answer["milk"] &&
+				correct["shot"] == answer["shot"] &&
+				val_in_range(answer["temp"], correct["temp"])
+			);
+
+			//console.log("Setting cookie "+quizID+".passed = "+pass);
+			Cookies.set(quizID+".passed", pass); // set the passed value.  NB: this is stored as a string in the cookie
+			location.href = pass ? "success.html" : "retry.html"; // redirect to the appropriate result page
+
+			return false;
+		});
+	});
+	</script>
+</head>
+
+<body>
+	<header>
+	<a href="index.html" value="home"><span>&#8962;</span>HOME</a>
+	</header>
+	<section id="validation-msg"><span class="msg"></span> <span class="close"><a href="#">X</a></span></section>
+	
+	<form action="#" method="get" id="quiz-form">
+		<section class="quiz-option">
+			<p class="radio-group-label">Cup: </p>
+
+			<div class="radio-group">
+				<input type="radio" id="cup-pic" name="cup" value="pic" /> <label for="cup-pic" />Piccolo (4 oz)</label><br />
+				<input type="radio" id="cup-reg" name="cup" value="reg" /> <label for="cup-reg" />Regular (8 oz)</label><br />
+				<input type="radio" id="cup-lg" name="cup" value="lg" /> <label for="cup-lg" />Large (12 oz)</label><br />
+			</div>
+
+			<div class="icon"><img src="imgs/cup-slider.png" /></div>
+		</section>
+
+		<section class="quiz-option">
+			<div><label for="foam">Foam: </label></div>
+			
+			<div class="range">
+				<div class="output"><output name="foam_out" for="foam_in">0</output> <span>%</span></div>
+				
+				<span class="min">0%</span> <input type="range" min="0" max="100" step="25" id="foam_in" name="foam_in" value="0" oninput="foam_out.value = foam_in.value" /> <span class="max">100%</span>
+			</div>
+
+			<div class="icon"><img src="imgs/foam-slider.png" /></div>
+		</section>
+
+		<section class="quiz-option">
+			<div><label for="milk">Milk: </label></div>
+			
+			<div class="range">
+				<div class="output"><output name="milk_out" for="milk_in">0</output> <span>%</span></div>
+				
+				<span class="min">0%</span> <input type="range" min="0" max="100" step="25" id="milk_in" name="milk_in" value="0" oninput="milk_out.value = milk_in.value" /> <span class="max">100%</span>
+			</div>
+
+			<div class="icon"><img src="imgs/milk-slider.png" /></div>
+		</section>
+
+		<section class="quiz-option">
+			<div><label for="temp">Temperature: </label></div>
+			
+			<div class="range">
+				<div class="output"><output name="temp_out" for="temp_in">0</output> <span>&deg;C</span></div>
+				
+				<span class="min">0%</span> <input type="range" min="30" max="100" step="5" id="temp_in" name="temp_in" value="0" oninput="temp_out.value = temp_in.value" /> <span class="max">100%</span>
+			</div>
+
+			<div class="icon"><img src="imgs/temp-slider.png" /></div>
+		</section>
+
+		<section class="quiz-option">
+			<div><label for="shot">Espresso: </label></div>
+			
+			<div class="range">
+				<div class="output"><output name="shot_out" for="shot_in">0</output> <span>mls</span></div>
+				
+				<span class="min">0%</span> <input type="range" min="0" max="90" step="15" id="shot_in" name="shot_in" value="0" oninput="shot_out.value = shot_in.value" /> <span class="max">100%</span>
+			</div>
+
+			<div class="icon"><img src="imgs/espresso-slider.png" /></div>
+		</section>
+
+		<p><button id="form-cancel">Cancel</button> <button id="form-ok">OK</button></p>
+
+	</form>
+
+</body>
+
+</html>

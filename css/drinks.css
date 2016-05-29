@@ -1,0 +1,48 @@
+#drinks-container > a[cup-choice],
+#drinks-container div  {
+	display: inline-block;
+	vertical-align: top;
+}
+.drink {
+	border-bottom: 1.5px solid #000;
+	padding-bottom: 0.5em;
+}
+
+.drink img.mix {
+  width: 47%;
+  margin-right:3%;
+}
+.drink p {
+  vertical-align: top;
+}
+a.button {
+  display: inline-block;
+  text-decoration: center;
+  background-color: #d3d3d3;
+  padding:10px 0.9em 10px 0.7em; /* don't know why, but this needs to be lob-sided to look right */
+  font-weight: bold;
+  border-radius: 5px;
+}
+a.button[href*="quiz"] {
+  margin-left: 12px;
+  padding: 12px 1.3em 11px 1.3em;
+  text-transform: uppercase;
+}
+a[value="cup-choice"] span {
+  display: inline-block;
+  font-size: 140%;
+  padding-right: 5px;
+}
+
+#quiz01-badge {
+  margin-top:25px;
+  width:50px;
+  display:none;
+}
+
+#quiz01-badge img {
+  position:relative;
+  width:50px;
+  top:18px;
+  margin-left:10px;
+}

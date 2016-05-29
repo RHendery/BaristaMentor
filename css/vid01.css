@@ -1,0 +1,18 @@
+/* Barista mentor - video styling */
+
+
+.videobutton {
+ position: absolute;
+ top: 50%;
+ z-index: 1;
+}
+
+#replaybutton {
+ left: 50%;
+ margin: 20px;
+}
+
+#backbutton {
+ right: 50%;
+ margin: 20px;
+}

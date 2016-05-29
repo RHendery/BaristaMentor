@@ -1,0 +1,22 @@
+img.main-menu {
+	position:relative;
+	top:-60px;
+	width:100%;
+	height:auto;
+	z-index:-1;
+}
+
+#hotspot {
+	position:absolute;
+	display:inline-block;
+	width:55%;
+	height:28%;
+	top:-2%;
+	z-index:3;
+	left:0;
+	/*border:1px solid blue;*/ /* uncomment this line to see the hotspot (for debugging) */
+}
+
+main>div { /* this is the panel containing the image and overlay link */
+	position:relative;
+}
