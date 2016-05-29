@@ -260,7 +260,7 @@ a:focus {
 }
 
 header {
-  background-color: "#3b5998"; //rgba(63, 232, 224, 1);
+  background-color: #3b5998; //rgba(63, 232, 224, 1);
   font-size: 135%;
   font-weight: bold;
   border-top: 2px solid #000;
