@@ -23,7 +23,29 @@
 	      version    : 'v2.6'
 	    });
 
-	    // ADD ADDITIONAL FACEBOOK CODE HERE
+			// Place following code after FB.init call.
+
+			function onLogin(response) {
+			  if (response.status == 'connected') {
+			    FB.api('/me?fields=first_name', function(data) {
+			      var welcomeBlock = document.getElementById('fb-welcome');
+			      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
+			    });
+			  }
+			}
+
+			FB.getLoginStatus(function(response) {
+			  // Check login status on load, and if the user is
+			  // already logged in, go directly to the welcome message.
+			  if (response.status == 'connected') {
+			    onLogin(response);
+			  } else {
+			    // Otherwise, show Login dialog first.
+			    FB.login(function(response) {
+			      onLogin(response);
+			    }, {scope: 'user_friends, email'});
+			  }
+			});
 	  };
 
 	  (function(d, s, id){
@@ -39,6 +61,7 @@
 		<a href="index.html" value="home"><span>&#8962;</span>HOME</a>
 	</header>
 	<main>
+		<h1 id="fb-welcome"></h1>
 		<div>
 			<img class="main-menu" src="imgs/menu-background.jpg" alt="dsfafdafds" border="0" width="1242" height="2070" usemap="menu-map" />
 
