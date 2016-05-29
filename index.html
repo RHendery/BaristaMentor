@@ -59,7 +59,7 @@
 	</script>
 
 	<header>
-		<a href="index.html" value="home"><span>&#8962;</span>HOME</a>
+		<a href="index.html" value="home"><span>&#8962;</span>START OVER</a>
 	</header>
 	<main>
 		<h1 id="fb-welcome"></h1>
